@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Login extends Component {
+  constructor(){
+    super();
+
+
+    this.state={
+      username: "",
+      password: ""
+    }
+    this.handleUpdatePassword = this.handleUpdatePassword.bind(this);
+    this.handleUpdateUsername = this.handleUpdateUsername.bind(this);
+    this.alertUser = this.alertUser.bind(this)
+  }
+
+  handleUpdateUsername(e){
+    this.setState({
+      username: e.target.value
+    })
+  }
+
+  handleUpdatePassword(e){
+    this.setState({
+      password: e.target.value
+    })
+  }
+
+  alertUser(e){
+    alert(`Username: ${this.state.username} Password: ${this.state.password}`)
+    // this.setState({
+    //   login: event.target.value
+    // })
+  }
+
+  render(){
+
+    return (
+      <div>
+        <input
+        onChange= {this.handleUpdateUsername}
+        placeholder ="Username"/>
+        <input 
+        onChange= {this.handleUpdatePassword}
+        placeholder ="Password"/>
+        <button onClick={this.alertUser}>Login</button>
+      </div>
+    )
+  }
+ 
+  
 }
 
-export default App;
+export default Login;
